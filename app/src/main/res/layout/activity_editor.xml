@@ -1,0 +1,143 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/app_background"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/tools_button_background">
+
+        <TextView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/editor_buttons_background"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/editor_back_button_text"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/btnApply"
+            android:text="@string/editor_btnApply_text"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/editor_buttons_background"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textSize="22sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/header"
+        android:layout_above="@+id/controller"
+        android:layout_height="fill_parent">
+
+        <com.guoxiaoxing.editor.widget.TouchImageView
+            android:id="@+id/imgPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+
+    <ViewFlipper
+        android:background="@color/editor_activity_background"
+        android:id="@+id/controller"
+        android:layout_width="match_parent"
+        android:layout_height="100dip"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:id="@+id/tool_view"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <it.sephiroth.android.library.widget.HListView
+                android:id="@+id/tool_listView"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:smoothScrollbar="false"
+                android:scrollingCache="false"
+                app:divider="@color/list_tool_divider_color"
+                app:hlv_dividerWidth="1dp"
+                android:choiceMode="singleChoice"
+                android:overScrollMode="always"
+                app:hlv_stackFromRight="false"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tool_detail"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <it.sephiroth.android.library.widget.HListView
+                android:id="@+id/content_listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:smoothScrollbar="false"
+                android:scrollingCache="false"
+                app:divider="@color/list_tool_divider_color"
+                app:hlv_dividerWidth="1dp"
+                android:choiceMode="singleChoice"
+                android:overScrollMode="always"
+                app:hlv_stackFromRight="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tool_option"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/toolSeekMinus"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:background="@android:color/transparent" />
+
+                <SeekBar
+                    android:id="@+id/toolSeekBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/toolSeekPlus"
+                    android:layout_toRightOf="@id/toolSeekMinus"
+                    android:paddingBottom="3dip"
+                    android:paddingLeft="1px"
+                    android:paddingRight="1px"
+                    android:paddingTop="3dip"
+                    android:progressDrawable="@drawable/seekbar_drawable"
+                    android:thumb="@drawable/dark_drag"
+                    android:thumbOffset="-1px" />
+
+                <ImageButton
+                    android:id="@+id/toolSeekPlus"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:color/transparent" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ViewFlipper>
+
+</RelativeLayout>

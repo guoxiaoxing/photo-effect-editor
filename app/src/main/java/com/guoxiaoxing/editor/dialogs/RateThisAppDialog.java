@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-import com.guoxiaoxing.editor.AppConstants;
+import com.guoxiaoxing.editor.AppConstant;
 import com.guoxiaoxing.editor.R;
 
 public class RateThisAppDialog extends Dialog {
@@ -24,7 +24,7 @@ public class RateThisAppDialog extends Dialog {
 	public RateThisAppDialog(Context context) {
 		super(context);
 		this.context = context;
-		pref = context.getSharedPreferences(AppConstants.APP_PREFERENCE,
+		pref = context.getSharedPreferences(AppConstant.APP_PREFERENCE,
 				Context.MODE_PRIVATE);
 	}
 
@@ -48,8 +48,8 @@ public class RateThisAppDialog extends Dialog {
 			switch (v.getId()) {
 			case R.id.btn_rate_now:
 				pref.edit()
-						.putString(AppConstants.APP_PREFERENCE_RATE,
-								AppConstants.APP_PREFERENCE_NEVER).commit();
+						.putString(AppConstant.APP_PREFERENCE_RATE,
+								AppConstant.APP_PREFERENCE_NEVER).commit();
 				final String packagename = context.getPackageName();
 				try {
 					Uri uri = Uri.parse("market://details?id=" + packagename);
@@ -65,7 +65,7 @@ public class RateThisAppDialog extends Dialog {
 				break;
 			case R.id.btn_later:
 				boolean s = pref.edit()
-						.putInt(AppConstants.APP_PREFERENCE_OPEN_TIMES, 0)
+						.putInt(AppConstant.APP_PREFERENCE_OPEN_TIMES, 0)
 						.commit();
 //				((BeautifulFrameActivity) context).setOpenTimes(0);
 //				GLog.v("NOT NOW", s + "");
@@ -73,8 +73,8 @@ public class RateThisAppDialog extends Dialog {
 				break;
 			case R.id.btn_never:
 				pref.edit()
-						.putString(AppConstants.APP_PREFERENCE_RATE,
-								AppConstants.APP_PREFERENCE_NEVER).commit();
+						.putString(AppConstant.APP_PREFERENCE_RATE,
+								AppConstant.APP_PREFERENCE_NEVER).commit();
 
 				break;
 			default:

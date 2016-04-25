@@ -7,7 +7,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 
-import com.guoxiaoxing.editor.AppConstants;
+import com.guoxiaoxing.editor.AppConstant;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,7 +39,7 @@ public class StorageUtils {
 
     public static File getPublicDirectiry() {
         File file = new File(Environment.getExternalStorageDirectory(),
-                AppConstants.APP_FOLDER);
+                AppConstant.APP_FOLDER);
         if (file.mkdirs()) {
             GLog.v("APP FOLDER", file.getPath() + " created");
         }
@@ -68,7 +68,7 @@ public class StorageUtils {
 
         if (isExternalStorageWritable()) {
             File folder = getPublicDirectiry();
-            File file = new File(folder, AppConstants.DEFAULT_FILE_PREFIX + id
+            File file = new File(folder, AppConstant.DEFAULT_FILE_PREFIX + id
                     + ".JPEG");
             return file;
         } else {
@@ -109,7 +109,7 @@ public class StorageUtils {
 
     public static File getCacheDirectory() {
         File file = new File(Environment.getExternalStorageDirectory(),
-                AppConstants.APP_CACHE_FOLDER);
+                AppConstant.APP_CACHE_FOLDER);
         if (!file.exists()) {
             if (!file.mkdirs()) {
                 GLog.v("CACHE FOLDER", "not create");

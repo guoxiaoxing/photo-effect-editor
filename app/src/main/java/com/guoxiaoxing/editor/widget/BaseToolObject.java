@@ -1,6 +1,6 @@
 package com.guoxiaoxing.editor.widget;
 
-import com.guoxiaoxing.editor.process.ITransformation;
+import com.guoxiaoxing.editor.process.effect.ITransformation;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.guoxiaoxing.editor.AppConstants;
+import com.guoxiaoxing.editor.AppConstant;
 import com.guoxiaoxing.editor.AppSettings;
 import com.guoxiaoxing.editor.R;
 import com.guoxiaoxing.editor.asynctasks.OnExecuteCompleteListener;
@@ -99,7 +99,7 @@ public class SavePhotoDialog extends Dialog {
         public void onClick(View v) {
 
             VibrateOnTouchListener vEx = new VibrateOnTouchListener(context);
-            vEx.onTouchVibrate(AppConstants.BUTTON_TOUCH_VIBRATE_TIME_MS);
+            vEx.onTouchVibrate(AppConstant.BUTTON_TOUCH_VIBRATE_TIME_MS);
             switch (v.getId()) {
                 case R.id.dialog_btnShare:
                     ShareIntentsDialog shareDialog = new ShareIntentsDialog.Builder(

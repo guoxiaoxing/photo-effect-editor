@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 
 import com.guoxiaoxing.editor.AppConfigs;
-import com.guoxiaoxing.editor.process.ITransformation;
+import com.guoxiaoxing.editor.process.effect.ITransformation;
 import com.guoxiaoxing.editor.utils.BitmapUtils;
 import com.guoxiaoxing.editor.utils.GLog;
 

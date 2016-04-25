@@ -11,6 +11,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.guoxiaoxing.editor.AppConfigs;
-import com.guoxiaoxing.editor.AppConstants;
+import com.guoxiaoxing.editor.AppConstant;
 import com.guoxiaoxing.editor.R;
 import com.guoxiaoxing.editor.utils.StorageUtils;
 
@@ -27,13 +28,19 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Created by phamxuanlu@gmail.com on 3/4/2015.
- * Màn hình chính của ứng dụng, tại đây có thể chọn ảnh cần chỉnh sửa hoặc chụp ảnh từ camera
+ * Author: guoxiaoxing
+ * Email: guoxiaoxingv@163.com
+ * Site: https://github.com/guoxiaoxing
+ * Date: 16/4/25 下午2:47
+ * Function:
+ *
+ * Modification history:
+ * Date                 Author              Version             Description
+ * --------------------------------------------------------------------------
+ * 16/4/25 下午2:47      guoxiaoxing          1.0
  */
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
     private final String IMG_CAPTURED_PATH = "IMG_CAPTURED_PATH";
-
-
     private TextView btnOpenPhoto;
     private TextView btnCamera;
     private ViewGroup activityLayout;
@@ -109,19 +116,19 @@ public class MainActivity extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case AppConstants.CHOOSE_PHOTO_REQUEST_CODE:
+                case AppConstant.CHOOSE_PHOTO_REQUEST_CODE:
                     Uri selectedPhoto = data.getData();
                     String filePath = StorageUtils.getPathFromUri(selectedPhoto, this);
                     Bundle bundle = new Bundle();
-                    bundle.putString(AppConstants.SELECTED_PHOTO, filePath);
-                    Intent editor = new Intent(MainActivity.this, EditPreviewActivity.class);
+                    bundle.putString(AppConstant.SELECTED_PHOTO, filePath);
+                    Intent editor = new Intent(MainActivity.this, PreviewActivity.class);
                     editor.putExtras(bundle);
                     startActivity(editor);
                     break;
-                case AppConstants.CAMERA_TAKE_A_PICTURE:
+                case AppConstant.CAMERA_TAKE_A_PICTURE:
                     Bundle bundleCam = new Bundle();
-                    bundleCam.putString(AppConstants.SELECTED_PHOTO, capturedPhoto);
-                    Intent edtor = new Intent(MainActivity.this, EditPreviewActivity.class);
+                    bundleCam.putString(AppConstant.SELECTED_PHOTO, capturedPhoto);
+                    Intent edtor = new Intent(MainActivity.this, PreviewActivity.class);
                     edtor.putExtras(bundleCam);
                     startActivity(edtor);
                     break;
@@ -137,7 +144,7 @@ public class MainActivity extends Activity {
                     Intent intentPick = new Intent();
                     intentPick.setData(Uri.parse("content://media/external/images/media"));
                     intentPick.setAction(Intent.ACTION_PICK);
-                    startActivityForResult(intentPick, AppConstants.CHOOSE_PHOTO_REQUEST_CODE);
+                    startActivityForResult(intentPick, AppConstant.CHOOSE_PHOTO_REQUEST_CODE);
                     break;
                 case R.id.btnCapture:
                     takePhotoFromCamera();
@@ -162,7 +169,7 @@ public class MainActivity extends Activity {
             return;
         }
         Intent takeIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File outPut = StorageUtils.createImageFile(AppConstants.CAMERA_PICTURE_PREFIX,
+        File outPut = StorageUtils.createImageFile(AppConstant.CAMERA_PICTURE_PREFIX,
                 StorageUtils.getCacheDirectory(), ".JPEG");
         if (outPut == null) {
             Toast.makeText(
@@ -177,7 +184,7 @@ public class MainActivity extends Activity {
         takeIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(outPut));
         takeIntent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
         if (takeIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takeIntent, AppConstants.CAMERA_TAKE_A_PICTURE);
+            startActivityForResult(takeIntent, AppConstant.CAMERA_TAKE_A_PICTURE);
         }
 
     }

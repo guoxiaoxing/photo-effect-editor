@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.guoxiaoxing.editor.R;
-import com.guoxiaoxing.editor.activity.EditorActivity;
+import com.guoxiaoxing.editor.activity.effect.EffectActivity;
 import com.guoxiaoxing.editor.asynctasks.PreviewThumbAsyncTask;
 import com.guoxiaoxing.editor.utils.AsyncTaskUtils;
 import com.guoxiaoxing.editor.widget.BaseToolObject;
@@ -77,7 +77,7 @@ public class EditorListToolsAdapter extends BaseAdapter {
             PreviewThumbAsyncTask thumbAsyncTask = new PreviewThumbAsyncTask.Builder(
                     holder.toolIcon,
                     obj,
-                    ((EditorActivity) context).getThumbnail())
+                    ((EffectActivity) context).getThumbnail())
                     .setOnProcessedListener(new PreviewThumbAsyncTask.OnProcessedListener() {
                         @Override
                         public void onProcessed() {

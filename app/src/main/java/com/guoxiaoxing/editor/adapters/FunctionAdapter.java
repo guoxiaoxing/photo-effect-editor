@@ -1,7 +1,6 @@
 package com.guoxiaoxing.editor.adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.guoxiaoxing.editor.AppConstants;
+import com.guoxiaoxing.editor.AppConstant;
 import com.guoxiaoxing.editor.R;
-import com.guoxiaoxing.editor.activity.EditorActivity;
+import com.guoxiaoxing.editor.activity.effect.EffectActivity;
+import com.guoxiaoxing.editor.activity.paint.PaintActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,7 +34,7 @@ public class FunctionAdapter extends RecyclerView.Adapter<FunctionAdapter.ViewHo
     private String mSelectPhoto;
     private String mEditPhoto;
 
-    public FunctionAdapter(Activity activity){
+    public FunctionAdapter(Activity activity) {
         mActivity = activity;
     }
 
@@ -111,6 +111,7 @@ public class FunctionAdapter extends RecyclerView.Adapter<FunctionAdapter.ViewHo
                     //魔幻笔
                     case 4:
                         holder.mTvFunction.setText("魔幻笔");
+                        startPaint();
                         break;
                     //马赛克
                     case 5:
@@ -141,23 +142,26 @@ public class FunctionAdapter extends RecyclerView.Adapter<FunctionAdapter.ViewHo
     }
 
 
-    public void setPhoto(String selectPhoto, String editPhoto){
+    public void setPhoto(String selectPhoto, String editPhoto) {
         mSelectPhoto = selectPhoto;
         mEditPhoto = editPhoto;
     }
 
     private void startEdit() {
-        Intent editIntent = new Intent(mActivity, EditorActivity.class);
-        editIntent.putExtra(AppConstants.SELECTED_PHOTO, mSelectPhoto);
-        editIntent.putExtra(EditorActivity.OUTPUT_PATH, mEditPhoto);
-        mActivity.startActivityForResult(editIntent, AppConstants.REQUEST_CODE_EDIT_ACTIVITY);
+        Intent editIntent = new Intent(mActivity, EffectActivity.class);
+        editIntent.putExtra(AppConstant.SELECTED_PHOTO, mSelectPhoto);
+        editIntent.putExtra(AppConstant.OUTPUT_PATH, mEditPhoto);
+        mActivity.startActivityForResult(editIntent, AppConstant.REQUEST_CODE_EDIT_ACTIVITY);
     }
 
-    private void startPaint(){
-
+    private void startPaint() {
+        Intent paintIntent = new Intent(mActivity, PaintActivity.class);
+        paintIntent.putExtra(AppConstant.SELECTED_PHOTO, mSelectPhoto);
+        paintIntent.putExtra(AppConstant.OUTPUT_PATH, mEditPhoto);
+        mActivity.startActivityForResult(paintIntent, AppConstant.REQUEST_CODE_EDIT_ACTIVITY);
     }
 
-    private void startText(){
+    private void startText() {
 
     }
 

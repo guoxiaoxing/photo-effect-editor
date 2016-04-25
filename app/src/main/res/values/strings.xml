@@ -64,15 +64,12 @@
     <!-- END Rate app dialog -->
 
 
-
-
     <string name="editor_btnApply_text">Apply</string>
     <string name="editor_btnUndo_text">Undo</string>
     <string name="editor_tool_name_effects">Effects</string>
     <string name="editor_apply_button_text">Apply</string>
     <string name="editor_btn_done_text">Done</string>
     <string name="editor_saving_progress_dialog">Saving&#8230;</string>
-
 
 
 </resources>

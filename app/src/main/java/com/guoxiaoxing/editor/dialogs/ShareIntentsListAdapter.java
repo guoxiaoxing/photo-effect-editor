@@ -16,7 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.guoxiaoxing.editor.AppConstants;
+import com.guoxiaoxing.editor.AppConstant;
 import com.guoxiaoxing.editor.R;
 import com.guoxiaoxing.editor.widget.VibrateOnTouchListener;
 
@@ -100,7 +100,7 @@ public class ShareIntentsListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 VibrateOnTouchListener vEx = new VibrateOnTouchListener(context);
-                vEx.onTouchVibrate(AppConstants.ITEM_TOUCH_VIBRATE_TIME_MS);
+                vEx.onTouchVibrate(AppConstant.ITEM_TOUCH_VIBRATE_TIME_MS);
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 File f = new File(imagePath);
                 intent.setType("image/*");
